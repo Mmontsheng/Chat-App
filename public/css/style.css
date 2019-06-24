@@ -1,0 +1,110 @@
+:root {
+  --primary-color--: #e01b49;
+  --secondary-color--: #f58023;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  outline: 0 none !important;
+  border-color: var( --primary-color--);
+}
+
+.theme-color {
+  color: var( --primary-color--);
+}
+
+.theme-secondary-color {
+  color: var( --secondary-color--);
+}
+
+.theme-bg-color {
+  background-color: var( --primary-color--);
+}
+
+.error {
+  font-size: 12px !important;
+  text-align: center;
+}
+
+img {
+  width: 70px;
+  height: 100px;
+}
+
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form .card {
+  width: 300px;
+}
+
+.text-message {
+  text-align: left;
+  padding: 0px 0 0px 15px !important;
+  border-bottom: 1px solid #e3e3e3 !important;
+  margin: 2px 0;
+  border-radius: 1px;
+}
+
+ul li {
+  list-style: none;
+  font-weight: 600;
+}
+
+i.fa-user {
+  background-color: var(--primary-color--);
+  border-radius: 50%;
+  font-size: 15px;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 1px;
+  color: #fff !important;
+  text-align: center;
+  width: 35px;
+}
+
+.users, .message-area {
+  height: 400px;
+  padding: 10px 20px 5px 10px;
+  overflow-y: auto;
+}
+
+.message-box {
+  padding-top: 10px;
+}
+
+.timestamp {
+  text-align: right;
+  font-size: 12px;
+}
+
+button {
+  background-color: var(--primary-color--) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--primary-color--) !important;
+  border-radius: 0 !important;
+}
+
+button:hover, button:focus {
+  background-color: transparent !important;
+  color: var(--primary-color--) !important;
+  
+  box-shadow: none !important;
+  outline: 0 none !important;
+  border-color: var( --primary-color--);
+}
+
+.card-header {
+  color: #fff;
+}
+
+@media (max-width:768px) {
+  .users, .message-area {
+    height: 250px;
+  }
+}

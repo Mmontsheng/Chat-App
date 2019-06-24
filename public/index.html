@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <title>chat</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div v-if="logged">
+            <nav>
+                <div class="container">
+                    <div class="branding text-center">
+                        <img src="img/logo.png">
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header theme-bg-color">
+                                <h5>Online Users
+                                </h5>
+                            </div>
+                            <ul class="list-group list-group-flush text-left users">
+                                <li class="list-group-item" v-for="(user, index) in users" :key="index">
+                                    <i class="fa fa-user"></i> {{ user }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header theme-bg-color">
+                                <h5>Messages</h5>
+                            </div>
+                            <div>
+                                <p class="text-center text-secondary">{{ feedback }}</p>
+                            </div>
+                            <div class="message-area" id="message-box">
+                                <div class="text-message" v-for="msg in messages" :key="msg.id">
+                                    <div class="theme-secondary-color handler">{{ msg.name }}</div>
+                                    <div class="text-default">{{ msg.message }}</div>
+                                    <div class="timestamp theme-color">{{ msg.timestamp }}</div>
+                                </div>
+                                <p v-if="!messages.length" class="text-center theme-color">No messages yet</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 message-box">
+                        <form @submit.prevent="sendMessage">
+                            <div class="input-group">
+                                <input type="text" class="form-control" v-model="message" @input="typing">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="submit" @click="sendMessage">Send Message</button>
+                                </span>
+                            </div>
+                            <p v-if="message_form_error" class="text-danger form_error">Enter message first</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-else="logged">
+            <div class="form">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="img/logo.png">
+                        </div>
+
+                        <h2 class="card-title">Login</h2>
+                        <form @submit.prevent="login">
+                            <p>
+                                <input type="text" class="form-control" placeholder="Enter user name" name="name"
+                                    v-model="name">
+                            </p>
+                            <button class="form-control btn btn-default block" type="submit">Login</button>
+                            <p v-if="login_form_error" class="text-danger error">Enter username first</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src='js/main.js'></script>
+
+
+</html>

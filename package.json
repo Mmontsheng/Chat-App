@@ -1,0 +1,21 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "Chat application using node express and vue js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon server.js"
+  },
+  "author": "Mmontsheng Maoto",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "socket.io": "^2.2.0"
+  }
+}
